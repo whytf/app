@@ -4,8 +4,7 @@
 ## Available Tags
 `latest` - Lite version of the original repo
 
-## How to:
-Run the container
+## Run the container:
     `docker run -d -e EARNAPP_UUID='sdk-node-XXXXXXXXXXXXXXXXXXX'  --name earnapp cwlu2001/earnapp:latest`
  
 ## Original work fazalfarhan01
