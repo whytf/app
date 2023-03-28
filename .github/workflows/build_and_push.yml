@@ -32,8 +32,7 @@ jobs:
       - name: Build & Push - Latest Lite
         run: |
           docker buildx build --squash --push \
-          -t cwlu2001/earnapp:$(cat ./version) \
-          -t cwlu2001/earnapp:latest \
+          -t cwlu2001/earnapp:test \
           --platform linux/amd64,linux/arm64 build/lite
 
       - name: Update Docker Hub Readme
