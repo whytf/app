@@ -1,7 +1,5 @@
 #!/bin/bash
-
 wget -qO- https://brightdata.com/static/earnapp/install.sh > /app/src/earnapp.sh
-#grep VERSION= /app/src/earnapp.sh | cut -d'"' -f2 > /app/src/version
 
 archs=`uname -m`
 PRODUCT="earnapp"
