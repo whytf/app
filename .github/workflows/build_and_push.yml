@@ -34,12 +34,3 @@ jobs:
           docker buildx build --squash --push \
           -t cwlu2001/earnapp:test \
           --platform linux/amd64,linux/arm64 build/lite
-
-      - name: Update Docker Hub Readme
-        uses: peter-evans/dockerhub-description@v2
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: cwlu2001/earnapp
-          short-description: UNOFFICIAL image for BrightData's EarnApp.
-          readme-filepath: DOCKERHUB_README.md
