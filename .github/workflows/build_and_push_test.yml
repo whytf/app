@@ -1,0 +1,35 @@
+name: Build and Push to Dockerhub test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+
+      - name: Login to Docker Hub
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - name: Download EarnApp installer
+        run: wget -qO- https://brightdata.com/static/earnapp/install.sh > ./earnapp.sh
+
+      - name: Get version
+        run: grep VERSION= ./earnapp.sh | cut -d'"' -f2 > ./version
+
+      - name: Build & Push - Latest Lite
+        run: |
+          docker buildx build --squash --push \
+          -t cwlu2001/earnapp:test \
+          --platform linux/amd64,linux/arm64 build/lite
