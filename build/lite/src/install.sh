@@ -8,7 +8,7 @@ printf $EARNAPP_UUID > /etc/earnapp/uuid
 
 earnapp stop
 sleep 2
-earnapp start &
+earnapp start
 sleep 2
 echo "Earnapp is running"
 earnapp run
