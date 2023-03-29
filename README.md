@@ -6,7 +6,7 @@
 `latest` - Lite version of the original repo
 
 ## Run the container:
-    docker run -d -e EARNAPP_UUID=sdk-node-XXXXXXXXXXXXXXXXXXX  --name earnapp cwlu2001/earnapp:latest
+    docker run -d -e EARNAPP_UUID=YOUR_EARNAPP_UUID --restart=always --name earnapp cwlu2001/earnapp:latest
  
 ## Like my work?
 Consider using my referral link

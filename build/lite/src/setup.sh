@@ -1,11 +1,9 @@
 #!/bin/bash
-
 wget -qO- https://brightdata.com/static/earnapp/install.sh > /app/src/earnapp.sh
-grep VERSION= /app/src/earnapp.sh | cut -d'"' -f2 > /app/src/version
 
 archs=`uname -m`
 PRODUCT="earnapp"
-VERSION=$(cat /app/src/version)
+VERSION=$(grep VERSION= /app/src/earnapp.sh | cut -d'"' -f2)
 
 if [ $archs = "x86_64" ]; then
     file=$PRODUCT-x64-$VERSION
