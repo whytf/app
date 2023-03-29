@@ -22,7 +22,7 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          
+
       - name: Download EarnApp installer
         run: wget -qO- https://brightdata.com/static/earnapp/install.sh > ./earnapp.sh
 
@@ -35,7 +35,7 @@ jobs:
           -t cwlu2001/earnapp:$(cat ./version) \
           -t cwlu2001/earnapp:latest \
           --platform linux/amd64,linux/arm64 build/lite
-          
+
       - name: Update Docker Hub Readme
         uses: peter-evans/dockerhub-description@v2
         with:
