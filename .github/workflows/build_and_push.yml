@@ -1,4 +1,4 @@
-name: Build and Push to Dockerhub test
+name: Build and Push to Dockerhub
 
 on:
   workflow_dispatch:
