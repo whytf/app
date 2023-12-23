@@ -1,21 +1,41 @@
 # EarnApp Docker
-### Docker Image for [EarnApp](https://earnapp.com/)
-**NOTICE** I will only update the lite version so you need to have a UUID to use it
+### UNOFFICIAL Containerized Docker Image for BrightData's [EarnApp](https://earnapp.com/)
 
 ## Available Tags
-`latest` - Lite version of the original repo
++ `latest`
++ `1.xxx.xxx`
 
-## Run the container:
-    docker run -d -e EARNAPP_UUID=YOUR_EARNAPP_UUID --restart=always --name earnapp cwlu2001/earnapp:latest
+## Run
+via `docker-compose.yaml`:
+```yaml
+version: '3'
+services:
+  earnapp:
+    image: cwlu2001/earnapp
+    container_name: earnapp
+    environment:
+      - EARNAPP_UUID=sdk-node-0123456789abcdeffedcba9876543210
+    restart: unless-stopped
+```
  
-## Like my work?
-Consider using my referral link
-- [Earnapp](https://earnapp.com/i/GdT3QJan)
+## How to Get UUID
+1.  The UUID is 32 characters long with lowercase alphabet and numbers. You can either create this by yourself or via this command:
+    ```bash
+    echo -n sdk-node- && head -c 1024 /dev/urandom | md5sum | tr -d ' -'
+    ```
 
-Original author is fazalfarhan01
-- BTC: 1PdUFXmVUxy88NRPJ2RFuhyjUqMiJyZybR
-- ETH: 0x715810d3619b6831b3d4ff0465ec3523aceb20c6
-- PayPal: [@fazalfarhan01](https://www.paypal.me/fazalfarhan01)
+    *Example output* </br>
+    *sdk-node-0123456789abcdeffedcba9876543210*
 
----
-[Source Code](https://github.com/cwlu2001/EarnApp-Docker-lite)
+2.  Before registering your device, ensure that you pass the UUID into the container and start it first. Then proceed to register your device using the url:
+    ```
+    https://earnapp.com/r/UUID
+    ```
+    *Example url* </br>
+    *`https://earnapp.com/r/sdk-node-0123456789abcdeffedcba9876543210`*
+
+## Credit
+[@fazalfarhan01](https://github.com/fazalfarhan01/EarnApp-Docker)
+
+
+[Source](https://github.com/cwlu2001/EarnApp-Docker-lite)
