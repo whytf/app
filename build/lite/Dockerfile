@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN apk add --no-cache dos2unix wget
+RUN apk add --no-cache dos2unix wget bash
 
 WORKDIR /app
 
