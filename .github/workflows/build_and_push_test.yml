@@ -32,17 +32,17 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           push: false
-          tags: madereddy/earnapp:{{github.run_number}} 
+          tags: earnapp:{{github.run_number}} 
       
       # Slim the Image
       - uses: kitabisa/docker-slim-action@v1
         env:
           DSLIM_HTTP_PROBE: false
         with:
-          target: madereddy/earnapp:{{github.run_number}}
+          target: earnapp:{{github.run_number}}
           tag: "slim-{{github.run_number}}"
            
       # Push to the registry
       - run: | 
-         docker tag madereddy/earnapp:slim-{{github.run_number}} ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim-{{github.run_number}}
+         docker tag earnapp:slim-{{github.run_number}} ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim-{{github.run_number}}
          docker push ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim-{{github.run_number}}
