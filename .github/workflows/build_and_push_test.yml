@@ -31,5 +31,5 @@ jobs:
       - name: Build & Push - Latest Lite
         run: |
           docker buildx build --squash --push \
-          -t cwlu2001/earnapp:test \
+          -t madereddy/earnapp:test \
           --platform linux/amd64,linux/arm64 build/lite
