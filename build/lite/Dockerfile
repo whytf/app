@@ -1,6 +1,9 @@
-FROM alpine
+FROM ubuntu:22.04
 
-RUN apk add --no-cache dos2unix wget bash
+ENV container=docker
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && apt install -y dos2unix wget && apt clean && apt autoremove -y
 
 WORKDIR /app
 
