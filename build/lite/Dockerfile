@@ -1,7 +1,4 @@
-FROM ubuntu:22.04
-
-ENV container=docker
-ENV DEBIAN_FRONTEND=noninteractive
+FROM debian:stable-slim
 
 RUN apt update && apt install -y dos2unix wget && apt clean && apt autoremove -y
 
