@@ -11,7 +11,7 @@ via `docker-compose.yaml`:
 version: '3'
 services:
   earnapp:
-    image: cwlu2001/earnapp
+    image: madereddy/earnapp
     container_name: earnapp
     environment:
       - EARNAPP_UUID=sdk-node-0123456789abcdeffedcba9876543210
@@ -33,9 +33,9 @@ services:
     ```
     *Example url* </br>
     *`https://earnapp.com/r/sdk-node-0123456789abcdeffedcba9876543210`*
-
 ## Credit
 [@fazalfarhan01](https://github.com/fazalfarhan01/EarnApp-Docker)
 
+[@cwlu2001](https://github.com/cwlu2001/EarnApp-Docker-lite)
 
-[Source](https://github.com/cwlu2001/EarnApp-Docker-lite)
+[Source](https://github.com/madereddy/EarnApp-Docker)
