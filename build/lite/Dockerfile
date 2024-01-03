@@ -16,8 +16,6 @@ RUN chmod a+x /usr/bin/install /usr/bin/hostnamectl /usr/bin/lsb_release
 
 RUN bash /app/src/setup.sh && rm -r /app/src
 
-RUN apt remove -y dos2unix wget && apt clean && apt autoremove -y 
-
 VOLUME [ "/etc/earnapp" ]
 
 CMD ["install"]
