@@ -1,9 +1,6 @@
-FROM debian:stable-slim
+FROM alpine
 
-ENV container=docker
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt update && apt install -y dos2unix wget && apt clean && apt autoremove -y
+RUN apk add --no-cache dos2unix wget
 
 WORKDIR /app
 
