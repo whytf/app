@@ -26,7 +26,7 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           push: false
-          tags: slim
+          tags: madereddy/earnapp:slim
       
       # Slim the Image
       - uses: kitabisa/docker-slim-action@v1
