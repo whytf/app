@@ -23,7 +23,7 @@ jobs:
         run: grep VERSION= ./earnapp.sh | cut -d'"' -f2 > ./version
 
       # Build the Docker image first
-      - uses: docker/build-push-action@v4
+      - uses: docker/build-push-action@v5
         with:
           push: false
           tags: madereddy/earnapp:{{ GITHUB_RUN_NUMBER }}
