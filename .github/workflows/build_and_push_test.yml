@@ -26,15 +26,15 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           push: false
-          tags: madereddy/earnapp:{{ GITHUB_RUN_NUMBER }}
+          tags: madereddy/earnapp:slim
       
       # Slim the Image
       - uses: kitabisa/docker-slim-action@v1
         env:
           DSLIM_HTTP_PROBE: false
         with:
-          target: madereddy/earnapp:{{ GITHUB_RUN_NUMBER }}
-          tag: "slim-{{ GITHUB_RUN_NUMBER }}"
+          target: madereddy/earnapp:slim
+          tag: "slim"
         
       - uses: docker/login-action@v3
         with:
@@ -43,5 +43,5 @@ jobs:
            
       # Push to the registry
       - run: | 
-         docker tag madereddy/earnapp:slim-{{ GITHUB_RUN_NUMBER }} ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim-{{ GITHUB_RUN_NUMBER }}
-         docker push ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim-{{ GITHUB_RUN_NUMBER }}
+         docker tag madereddy/earnapp:slim ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim
+         docker push ${{ secrets.DOCKERHUB_USERNAME }}/madereddy/earnapp:slim
