@@ -32,5 +32,5 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ cwlu2001/earnapp:$(VERSION) }}
+          tags: ${{ madereddy/earnapp:$(VERSION) }}
             # cwlu2001/earnapp:latest
