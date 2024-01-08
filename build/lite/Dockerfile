@@ -1,11 +1,9 @@
-#FROM ubuntu:22.04@sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b
-FROM alpine:latest
+FROM ubuntu:22.04@sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b
 
-#ENV container=docker
-#ENV DEBIAN_FRONTEND=noninteractive
+ENV container=docker
+ENV DEBIAN_FRONTEND=noninteractive
 
-#RUN apt update && apt install -y wget && apt clean && apt autoremove -y
-RUN apk add --no-cache bash wget
+RUN apt update && apt install -y wget --no-install-recommends && apt clean && apt autoremove -y && rm -rf /**var**/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -17,8 +15,7 @@ RUN cp /app/src/install.sh /usr/bin/install
 RUN chmod a+x /usr/bin/install
 #RUN chmod a+x /usr/bin/hostnamectl /usr/bin/lsb_release
 
-#RUN bash /app/src/setup.sh && rm -r /app/src
-RUN /bin/sh /app/src/setup.sh && rm -r /app/src
+RUN bash /app/src/setup.sh && rm -r /app/src
 
 VOLUME [ "/etc/earnapp" ]
 
