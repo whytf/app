@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "Installing"
 cp /download/earnapp /usr/bin/earnapp
 rm -r /download/earnapp
