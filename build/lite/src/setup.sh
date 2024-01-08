@@ -23,5 +23,5 @@ fi
 mkdir /download
 wget -cq --no-check-certificate https://cdn-earnapp.b-cdn.net/static/$file -O /download/earnapp
 echo | md5sum /download/earnapp
-chmod +x /download/earnapp
-ls -la /src
+ls /download
+#chmod +x /download/earnapp
