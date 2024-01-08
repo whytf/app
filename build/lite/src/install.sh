@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Installing"
 cp /download/earnapp /usr/bin/earnapp
+rm -r /download/earnapp
 chmod a+wr /etc/earnapp/
 touch /etc/earnapp/status
 chmod a+wr /etc/earnapp/status
