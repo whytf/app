@@ -27,7 +27,7 @@ jobs:
         run: VERSION=$(wget -qO- https://brightdata.com/static/earnapp/install.sh | grep VERSION= | cut -d '"' -f 2)
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
