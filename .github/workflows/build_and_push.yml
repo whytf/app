@@ -30,6 +30,6 @@ jobs:
       - name: Build & Push - Latest Gost
         run: |
           docker buildx build --squash --push \
-          -t madereddy/earnapp:$(cat ./version) \
-          -t madereddy/earnapp:latest \
+          -t ${{ secrets.DOCKER_REPO }}:$(cat ./version) \
+          -t ${{ secrets.DOCKER_REPO }}:latest \
           --platform linux/amd64,linux/arm64 build/gost
