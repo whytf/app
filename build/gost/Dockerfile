@@ -18,18 +18,9 @@ WORKDIR /app
 
 # Download and install EarnApp
 RUN wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh && \
-    archs=$(uname -m) && \
     PRODUCT="earnapp" && \
     VERSION=$(grep VERSION= /tmp/earnapp.sh | cut -d'"' -f2) && \
-    if [ "$archs" = "x86_64" ] || [ "$archs" = "amd64" ]; then \
-        file=$PRODUCT-x64-$VERSION; \
-    elif [ "$archs" = "armv7l" ] || [ "$archs" = "armv6l" ]; then \
-        file=$PRODUCT-arm7l-$VERSION; \
-    elif [ "$archs" = "aarch64" ] || [ "$archs" = "arm64" ]; then \
-        file=$PRODUCT-aarch64-$VERSION; \
-    else \
-        file=$PRODUCT-arm7l-$VERSION; \
-    fi && \
+    file=$PRODUCT-x64-$VERSION; \
     wget -cq --no-check-certificate https://cdn-earnapp.b-cdn.net/static/$file -O /usr/bin/earnapp && \
     chmod +x /usr/bin/earnapp && \
     rm /tmp/earnapp.sh
@@ -37,15 +28,7 @@ RUN wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
 # Download and install GOST v3.2.5
 RUN archs=$(uname -m) && \
     GOST_VERSION="3.2.5" && \
-    if [ "$archs" = "x86_64" ] || [ "$archs" = "amd64" ]; then \
-        GOST_ARCH="linux_amd64v3"; \
-    elif [ "$archs" = "aarch64" ] || [ "$archs" = "arm64" ]; then \
-        GOST_ARCH="linux_arm64v8"; \
-    elif [ "$archs" = "armv7l" ]; then \
-        GOST_ARCH="linux_armv7"; \
-    else \
-        GOST_ARCH="linux_amd64v3"; \
-    fi && \
+    GOST_ARCH="linux_amd64v3"; \
     wget -q https://github.com/go-gost/gost/releases/download/v${GOST_VERSION}/gost_${GOST_VERSION}_${GOST_ARCH}.tar.gz -O /tmp/gost.tar.gz && \
     mkdir -p /opt/gost && \
     tar -xzf /tmp/gost.tar.gz -C /opt/gost && \
