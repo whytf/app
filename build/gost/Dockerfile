@@ -40,7 +40,7 @@ RUN archs=$(uname -m) && \
     if [ "$archs" = "x86_64" ] || [ "$archs" = "amd64" ]; then \
         GOST_ARCH="linux_amd64v3"; \
     elif [ "$archs" = "aarch64" ] || [ "$archs" = "arm64" ]; then \
-        GOST_ARCH="linux_arm64v8"; \
+        GOST_ARCH="linux_arm64"; \
     elif [ "$archs" = "armv7l" ]; then \
         GOST_ARCH="linux_armv7"; \
     else \
