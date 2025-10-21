@@ -35,8 +35,18 @@ RUN wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
     rm /tmp/earnapp.sh
 
 # Download and install GOST v3.2.5
-RUN GOST_VERSION="3.2.5" && \
-    wget -q https://github.com/go-gost/gost/releases/download/v${GOST_VERSION}/gost_${GOST_VERSION}_linux_amd64v3.tar.gz -O /tmp/gost.tar.gz && \
+RUN archs=$(uname -m) && \
+    GOST_VERSION="3.2.5" && \
+    if [ "$archs" = "x86_64" ] || [ "$archs" = "amd64" ]; then \
+        GOST_ARCH="linux_amd64v3"; \
+    elif [ "$archs" = "aarch64" ] || [ "$archs" = "arm64" ]; then \
+        GOST_ARCH="linux_arm64v8"; \
+    elif [ "$archs" = "armv7l" ]; then \
+        GOST_ARCH="linux_armv7"; \
+    else \
+        GOST_ARCH="linux_amd64v3"; \
+    fi && \
+    wget -q https://github.com/go-gost/gost/releases/download/v${GOST_VERSION}/gost_${GOST_VERSION}_linux_${GOST_ARCH}.tar.gz -O /tmp/gost.tar.gz && \
     mkdir -p /opt/gost && \
     tar -xzf /tmp/gost.tar.gz -C /opt/gost && \
     chmod +x /opt/gost/gost && \
