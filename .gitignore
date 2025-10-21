@@ -1,1 +1,9 @@
 *etc*
+
+# GOST deployment files with sensitive data
+containers.txt
+docker-compose.yml
+
+# Keep example files
+!containers.txt.example
+!docker-compose.yml.example

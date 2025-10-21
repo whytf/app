@@ -1,0 +1,79 @@
+version: '3.8'
+
+networks:
+  earnapp_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+
+services:
+  earnapp-node-1:
+    image: killermantv/gostprod:latest
+    container_name: earnapp-node-1
+    hostname: earnapp-node-1
+    environment:
+      - ADDR=192.168.1.100:1080
+      - USERNAME=myuser
+      - PASSWORD=mypass123
+      - TIMEZONE=Europe/London
+      - HOSTNAME=earnapp-node-1
+      - UUID=sdk-node-abc123def456
+      - PROXY_IP=10.0.0.10
+    networks:
+      earnapp_network:
+        ipv4_address: 10.0.0.10
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - earnapp-node-1_data:/etc/earnapp
+  earnapp-node-2:
+    image: killermantv/gostprod:latest
+    container_name: earnapp-node-2
+    hostname: earnapp-node-2
+    environment:
+      - ADDR=192.168.1.100:1080
+      - USERNAME=myuser
+      - PASSWORD=mypass123
+      - TIMEZONE=Europe/London
+      - HOSTNAME=earnapp-node-2
+      - UUID=sdk-node-ghi789jkl012
+      - PROXY_IP=10.0.0.11
+    networks:
+      earnapp_network:
+        ipv4_address: 10.0.0.11
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - earnapp-node-2_data:/etc/earnapp
+  earnapp-node-3:
+    image: killermantv/gostprod:latest
+    container_name: earnapp-node-3
+    hostname: earnapp-node-3
+    environment:
+      - ADDR=192.168.1.100:1080
+      - USERNAME=myuser
+      - PASSWORD=mypass123
+      - TIMEZONE=Europe/London
+      - HOSTNAME=earnapp-node-3
+      - UUID=sdk-node-mno345pqr678
+      - PROXY_IP=10.0.0.12
+    networks:
+      earnapp_network:
+        ipv4_address: 10.0.0.12
+    restart: unless-stopped
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - earnapp-node-3_data:/etc/earnapp
+
+volumes:
+  earnapp-node-1_data:
+  earnapp-node-2_data:
+  earnapp-node-3_data:
+

@@ -1,0 +1,4 @@
+HOSTNAME,PROXY_IP,UUID
+earnapp-node-1,10.0.0.10,sdk-node-abc123def456
+earnapp-node-2,10.0.0.11,sdk-node-ghi789jkl012
+earnapp-node-3,10.0.0.12,sdk-node-mno345pqr678
