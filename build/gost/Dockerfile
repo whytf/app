@@ -11,6 +11,7 @@ RUN apt update && apt install -y \
     iptables \
     iptables-persistent \
     ca-certificates \
+    coreutils \
     && apt clean && apt autoremove -y && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
