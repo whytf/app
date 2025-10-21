@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@main
+      
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@master
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -26,18 +27,9 @@ jobs:
       - name: Get version
         run: grep VERSION= ./earnapp.sh | cut -d'"' -f2 > ./version
 
-      - name: Build & Push - Latest Lite
+      - name: Build & Push - Latest Gost
         run: |
           docker buildx build --squash --push \
           -t madereddy/earnapp:$(cat ./version) \
           -t madereddy/earnapp:latest \
-          --platform linux/amd64,linux/arm64 build/lite
-
-      - name: Update Docker Hub Readme
-        uses: peter-evans/dockerhub-description@v5
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: madereddy/earnapp
-          short-description: UNOFFICIAL image for BrightData's EarnApp.
-          readme-filepath: DOCKERHUB_README.md
+          --platform linux/amd64,linux/arm64 build/gost
