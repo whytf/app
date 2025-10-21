@@ -46,7 +46,7 @@ RUN archs=$(uname -m) && \
     else \
         GOST_ARCH="linux_amd64v3"; \
     fi && \
-    wget -q https://github.com/go-gost/gost/releases/download/v${GOST_VERSION}/gost_${GOST_VERSION}_linux_${GOST_ARCH}.tar.gz -O /tmp/gost.tar.gz && \
+    wget -q https://github.com/go-gost/gost/releases/download/v${GOST_VERSION}/gost_${GOST_VERSION}_${GOST_ARCH}.tar.gz -O /tmp/gost.tar.gz && \
     mkdir -p /opt/gost && \
     tar -xzf /tmp/gost.tar.gz -C /opt/gost && \
     chmod +x /opt/gost/gost && \
