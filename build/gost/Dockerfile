@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:latest
 
 ENV container=docker
 ENV DEBIAN_FRONTEND=noninteractive
